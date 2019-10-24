@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "951287377841",
+    "firebase_url": "https://appdistancia-27742.firebaseio.com",
+    "project_id": "appdistancia-27742",
+    "storage_bucket": "appdistancia-27742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951287377841:android:c5a58d6422e365860e9790",
+        "android_client_info": {
+          "package_name": "com.example.appdistancia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951287377841-d7k0cefm9pgmr6mb6k86kq3vei2dr0lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appdistancia",
+            "certificate_hash": "780b3f96b583f67f84e0bd837dc4cef6b65996d4"
+          }
+        },
+        {
+          "client_id": "951287377841-9jleqmc1od4ob5tiqvt92npluv395hta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXe_jovgtlS1RIRvXd20PXA0CbrWPhWzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951287377841-9jleqmc1od4ob5tiqvt92npluv395hta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
