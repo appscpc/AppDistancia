@@ -1,4 +1,4 @@
-package com.example.appdistancia.View;
+package com.example.appdistancia.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TableLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appdistancia.Model.Distance;
-import com.example.appdistancia.Model.Project;
+import com.example.appdistancia.Model.Resistance;
 import com.example.appdistancia.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ViewDistances extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
@@ -62,6 +62,7 @@ public class ViewDistances extends AppCompatActivity {
         }
 
         listarDistances();
+
     }
 
     public void initializeFirebase(){
@@ -77,16 +78,31 @@ public class ViewDistances extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void addResistance(){
+        Resistance r = new Resistance();
+        r.setIdResistance(UUID.randomUUID().toString());
+        r.setName("180");
+        r.setObject("Piedra");
+        r.setAmount(4.0);
+        databaseReference.child("Resistance").child(r.getIdResistance()).setValue(r);
+    }
+
+    public void calculateRoute(View v){
+        Intent i = new Intent(ViewDistances.this, CalculateRouteActivity.class);
+        i.putExtra("projectId",projectId);
+        startActivity(i);
+    }
+
     public void listarDistances(){
         databaseReference.child("Distances").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listObjectA.clear();
+                listDistances.clear();
+                listObjectB.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                     Distance d = objSnapshot.getValue(Distance.class);
-                    //Toast.makeText(ViewDistances.this, "" + d.getIdProject(), Toast.LENGTH_LONG).show();
                     if(projectId.equals(d.getIdProject())) {
-                        //Toast.makeText(ViewDistances.this, ""+ d.getIdProject(), Toast.LENGTH_LONG).show();
                         listObjectA.add(d.getObjectA());
                         listDistances.add(d.getDistance());
                         listObjectB.add(d.getObjectB());

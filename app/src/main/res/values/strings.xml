@@ -6,11 +6,20 @@
     <string name="addDistance_title">Agregar Distancias</string>
     <string name="addObject_title">Agregar Objeto</string>
     <string name="viewDistances_title">Ver Distancias</string>
+    <string name="viewBestDistances_title">Ver Mejor Ruta</string>
+    <string name="calculateBestDistances_title">Mejor Ruta</string>
+    <string-array name="resistencia_array">
+        <item>210</item>
+        <item>180</item>
+    </string-array>
     <string-array name="objects_array">
         <item>Agua</item>
-        <item>Mezcladora</item>
         <item>Cemento</item>
         <item>Arena</item>
         <item>Piedra</item>
+    </string-array>
+    <string-array name="restrictions_array">
+        <item>Si</item>
+        <item>No</item>
     </string-array>
 </resources>

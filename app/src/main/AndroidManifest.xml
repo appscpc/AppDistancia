@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".Controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,24 +17,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.SignupActivity"
+            android:name=".Controller.SignupActivity"
             android:label="@string/signup_title"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.ProjectsActivity"
+            android:name=".Controller.ProjectsActivity"
             android:label="@string/projects_title"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.CreateProjectActivity"
+            android:name=".Controller.CreateProjectActivity"
             android:label="@string/createProject_title"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.AddDistanceActivity"
+            android:name=".Controller.AddDistanceActivity"
             android:label="@string/addDistance_title"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.ViewDistances"
+            android:name=".Controller.ViewDistances"
             android:label="@string/viewDistances_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Controller.CalculateRouteActivity"
+            android:label="@string/viewDistances_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Controller.BestRouteActivity"
+            android:label="@string/viewBestDistances_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Controller.CalculateBestRouteActivity"
+            android:label="@string/calculateBestDistances_title"
             android:theme="@style/AppTheme" />
     </application>
 

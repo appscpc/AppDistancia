@@ -1,9 +1,11 @@
-package com.example.appdistancia.View;
+package com.example.appdistancia.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,8 @@ import java.util.UUID;
 public class CreateProjectActivity extends AppCompatActivity {
     EditText projectName;
     EditText projectDescription;
+    EditText txt_meters;
+    Spinner spinner_resistencia;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -32,6 +36,13 @@ public class CreateProjectActivity extends AppCompatActivity {
 
         projectName = findViewById(R.id.txt_name2);
         projectDescription = findViewById(R.id.txt_description2);
+        txt_meters =  findViewById(R.id.edit_meters);
+
+        spinner_resistencia = findViewById(R.id.spinner_resistencia);
+        ArrayAdapter<CharSequence> adapterResistencia = ArrayAdapter.createFromResource(this, R.array.resistencia_array , android.R.layout.simple_spinner_item);
+        adapterResistencia.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_resistencia.setAdapter(adapterResistencia);
+
 
         initializeFirebase();
     }
@@ -49,6 +60,8 @@ public class CreateProjectActivity extends AppCompatActivity {
         p.setName(projectName.getText().toString());
         p.setDescription(projectDescription.getText().toString());
         p.setIdUser(firebaseAuth.getCurrentUser().getUid());
+        p.setMeters(Double.parseDouble(txt_meters.getText().toString()));
+        p.setResistencia(spinner_resistencia.getSelectedItem().toString());
         if(!p.isNull()){
             Toast.makeText(this,"Error hay espacios vacios.",Toast.LENGTH_LONG).show();
         } else if(insertProject(p)){

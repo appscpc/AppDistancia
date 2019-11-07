@@ -1,4 +1,4 @@
-package com.example.appdistancia.View;
+package com.example.appdistancia.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appdistancia.Model.Distance;
-import com.example.appdistancia.Model.Project;
 import com.example.appdistancia.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +22,8 @@ import java.util.UUID;
 
 public class AddDistanceActivity extends AppCompatActivity {
     EditText txt_distance;
-    EditText txt_veces;
-    Spinner spinnerA;
+    TextView txt_batidora;
+    Spinner spinnerRestrictions;
     Spinner spinnerB;
 
     String projectId;
@@ -37,20 +37,24 @@ public class AddDistanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adddistance);
 
-        spinnerA = findViewById(R.id.spinner_objectA);
-        ArrayAdapter<CharSequence> adapterA = ArrayAdapter.createFromResource(this, R.array.objects_array , android.R.layout.simple_spinner_item);
-        adapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerA.setAdapter(adapterA);
+        txt_batidora = findViewById(R.id.txt_objectABatidora);
+
+        /*spinnerRestrictions = findViewById(R.id.spinner_resistencia);
+        ArrayAdapter<CharSequence> adapterResistance = ArrayAdapter.createFromResource(this, R.array.restrictions_array, android.R.layout.simple_spinner_item);
+        adapterResistance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRestrictions.setAdapter(adapterResistance); */
 
         spinnerB = findViewById(R.id.spinner_objectB);
         ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(this, R.array.objects_array , android.R.layout.simple_spinner_item);
         adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerB.setAdapter(adapterB);
 
+
+
         initializeFirebase();
 
         txt_distance = findViewById(R.id.txt_distance);
-        txt_veces = findViewById(R.id.txt_cantidadPasadas);
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -68,11 +72,11 @@ public class AddDistanceActivity extends AppCompatActivity {
     public void addDistance(View v){
         Distance d = new Distance();
         d.setIdDistance(UUID.randomUUID().toString());
-        d.setObjectA(spinnerA.getSelectedItem().toString());
+        d.setObjectA(txt_batidora.getText().toString());
         d.setObjectB(spinnerB.getSelectedItem().toString());
         d.setDistance(Double.parseDouble(txt_distance.getText().toString()));
-        d.setVeces(Integer.parseInt(txt_veces.getText().toString()));
         d.setIdProject(projectId);
+        //d.setRestrictions(spinnerRestrictions.getSelectedItem().toString());
         if(insertDistance(d)){
             Toast.makeText(this,"Las distancias se han creado.",Toast.LENGTH_LONG).show();
             viewDistances(v);

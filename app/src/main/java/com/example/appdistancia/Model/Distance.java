@@ -4,17 +4,17 @@ public class Distance {
     private String idDistance;
     private String objectA;
     private String objectB;
-    private Double distance;
-    private int veces;
+    private double distance;
     private String idProject;
+    private String restrictions;
 
-    public Distance(String objectA, String objectB, Double distance, int veces) {
+    public Distance(String objectA, String objectB, double distance, String restrictions) {
         this.idDistance = idDistance;
         this.objectA = objectA;
         this.objectB = objectB;
         this.distance = distance;
-        this.veces = veces;
         this.idProject = idProject;
+        this.restrictions = restrictions;
     }
 
     public Distance() {
@@ -22,8 +22,8 @@ public class Distance {
         this.objectA = objectA;
         this.objectB = objectB;
         this.distance = distance;
-        this.veces = veces;
         this.idProject = idProject;
+        this.restrictions = restrictions;
     }
 
 
@@ -51,20 +51,12 @@ public class Distance {
         this.objectB = objectB;
     }
 
-    public Double getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
-    }
-
-    public int getVeces() {
-        return veces;
-    }
-
-    public void setVeces(int veces) {
-        this.veces = veces;
     }
 
     public String getIdProject() {
@@ -73,5 +65,13 @@ public class Distance {
 
     public void setIdProject(String idProject) {
         this.idProject = idProject;
+    }
+
+    public String getRestrictions() {
+        return restrictions;
+    }
+
+    public void setRestrictions(String restrictions) {
+        this.restrictions = restrictions;
     }
 }

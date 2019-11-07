@@ -1,4 +1,4 @@
-package com.example.appdistancia.View;
+package com.example.appdistancia.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;

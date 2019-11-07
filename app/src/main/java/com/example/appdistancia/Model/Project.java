@@ -1,22 +1,21 @@
 package com.example.appdistancia.Model;
 
-import java.util.ArrayList;
 
 public class Project {
     private String idProject;
     private String name;
     private String description;
     private String idUser;
+    private double meters;
+    private String resistencia;
 
-    //private ArrayList<Object> objects;
-    //private ArrayList<Distance> distances;
 
-    public Project(String idProject, String name, String description) {
+    public Project(String idProject, String name, String description, double meters, String resistencia) {
         this.idProject = idProject;
         this.name = name;
         this.description = description;
-        //this.objects = objects;
-        //this.distances = distances;
+        this.meters = meters;
+        this.resistencia = resistencia;
     }
 
     public boolean isNull(){
@@ -29,6 +28,9 @@ public class Project {
     public Project(){
         this.idProject = idProject;
         this.name = name;
+        this.description = description;
+        this.meters = meters;
+        this.resistencia = resistencia;
     }
 
     public String getIdProject() {
@@ -63,24 +65,26 @@ public class Project {
         this.idUser = idUser;
     }
 
+    public double getMeters() {
+        return meters;
+    }
+
+    public void setMeters(double meters) {
+        this.meters = meters;
+    }
+
+    public String getResistencia() {
+        return resistencia;
+    }
+
+    public void setResistencia(String resistencia) {
+        this.resistencia = resistencia;
+    }
+
     @Override
     public String toString() {
         return name;
     }
 
-    /* public ArrayList<Object> getObjects() {
-        return objects;
-    }
 
-    public void setObjects(ArrayList<Object> objects) {
-        this.objects = objects;
-    }
-
-    public ArrayList<Distance> getDistances() {
-        return distances;
-    }
-
-    public void setDistances(ArrayList<Distance> distances) {
-        this.distances = distances;
-    } */
 }
